@@ -250,6 +250,7 @@ void SearchWidget::refreshSearchspaces()
     ui->searchspaceCombo->clear();
     ui->searchspaceCombo->addItem(tr("asm code"), QVariant("/acj"));
     ui->searchspaceCombo->addItem(tr("string"), QVariant("/j"));
+    ui->searchspaceCombo->addItem(tr("string (case insensitive)"), QVariant("/ij"));
     ui->searchspaceCombo->addItem(tr("hex string"), QVariant("/xj"));
     ui->searchspaceCombo->addItem(tr("ROP gadgets"), QVariant("/Rj"));
     ui->searchspaceCombo->addItem(tr("32bit value"), QVariant("/vj"));
