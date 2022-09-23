@@ -92,7 +92,7 @@ bool HexdumpRangeDialog::validate()
             ui->lengthLineEdit->setText("Invalid");
             return false;
         }
-    } else {
+    } else if (ui->lengthRadioButton->isChecked()) {
         // we edited the length, so update the end address to be start address + length
         length = Core()->math(ui->lengthLineEdit->text());
         if (length == 0) {
@@ -110,6 +110,8 @@ bool HexdumpRangeDialog::validate()
                 ui->endAddressLineEdit->setText(QString("0x%1").arg(endAddress + 1, 0, 16));
             }
         }
+    } else {
+        
     }
 
     // Warn the user for potentially heavy operation
@@ -137,5 +139,8 @@ void HexdumpRangeDialog::on_radioButtonClicked(bool checked)
         ui->lengthLineEdit->setEnabled(true);
         ui->endAddressLineEdit->setEnabled(false);
         ui->lengthLineEdit->setFocus();
+    } else if (sender() == ui->jsonRadioButton && checked == true) {
+        ui->lengthLineEdit->setEnabled(false);
+        ui->endAddressLineEdit->setEnabled(false);
     }
 }
